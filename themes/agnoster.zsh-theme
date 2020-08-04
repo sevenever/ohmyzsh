@@ -97,6 +97,8 @@ prompt_context() {
 prompt_git() {
   (( $+commands[git] )) || return
   if [[ "$(git config --get oh-my-zsh.hide-status 2>/dev/null)" = 1 ]]; then
+    prompt_segment white black
+    echo -n $(__git_ps1 "%s")
     return
   fi
   local PL_BRANCH_CHAR
